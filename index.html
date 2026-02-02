@@ -538,7 +538,7 @@
         <a href="#map" class="nav-link">Генплан</a>
         <a href="#documents" class="nav-link">Документы</a>
         <a href="#contacts" class="nav-link">Контакты</a>
-        <a href="tel:+79998887766" class="nav-link" style="color:var(--accent-gold)">+7 (999) 888-77-66</a>
+        <a href="tel:+79871079595" class="nav-link" style="color:var(--accent-gold)">+7 (987) 107-95-95</a>
       </nav>
     </div>
   </header>
@@ -1135,6 +1135,10 @@
     });
 
     // --- Form Submission Logic ---
+    // ВАЖНО: Зарегистрируйтесь на https://formspree.io/
+    // Создайте новую форму и скопируйте сюда её ID (например: 'xjdqnoqk')
+    const FORMSPREE_ID = 'mgozpeor';
+
     function sendForm(event, formType) {
       event.preventDefault();
       const form = event.target;
@@ -1142,20 +1146,41 @@
       const data = Object.fromEntries(formData.entries());
       data.type = formType; // 'contact' or 'booking'
 
-      fetch('/send-request', {
+      // Проверка настройки ID
+      if (FORMSPREE_ID === 'YOUR_ID_HERE') {
+        alert('Система отправки почти готова!\n\nДля владельца сайта: необходимо вставить ID формы Formspree в код index.html (строка ~1140).\n\nСейчас ваша заявка не была отправлена.');
+        return;
+      }
+
+      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(data)
       })
-        .then(response => response.json())
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            return response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                throw new Error(data["errors"].map(error => error["message"]).join(", "));
+              } else {
+                throw new Error('Ошибка сервиса отправки');
+              }
+            });
+          }
+        })
         .then(result => {
-          alert('Спасибо. Мы обязательно с Вами свяжемся, Желаем Вам всего хорошего и тепла в доме');
+          alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
           form.reset();
           if (formType === 'booking') closeReservationModal();
         })
         .catch(error => {
           console.error('Error:', error);
-          alert('Ошибка отправки. Пожалуйста, позвоните нам.');
+          alert('Произошла ошибка при отправке: ' + error.message);
         });
     }
 
