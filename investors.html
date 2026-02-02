@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-023WYKLBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-023WYKLBNJ');
+  </script>
+  <meta charset="UTF-8" />
+  <title>Инвесторам — Многопрофильная зона посёлка «Алхасты»</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Инвестиционная презентация многопрофильной зоны посёлка «Алхасты»: структура проекта, финансовая модель, параметры доходности и государственная поддержка." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      /* чтобы не было горизонтальной прокрутки */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :root {
+      --bg-main: #020617;
+      --bg-alt: #020818;
+      --bg-card: rgba(15, 23, 42, 0.94);
+      --accent-green: #16a34a;
+      --accent-gold: #eab308;
+      --accent-blue: #38bdf8;
+      --border-soft: rgba(148, 163, 184, 0.38);
+      --border-strong: rgba(148, 163, 184, 0.6);
+      --text-muted: #9ca3af;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.75);
+      --radius-xl: 26px;
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Шапка */
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c55e, #16a34a 45%, #065f46 95%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.65);
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 3px;
+      color: #cbd5f5;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+      transition: width 0.22s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #e5e7eb;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      background: transparent;
+      color: #e5e7eb;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #22c55e, #16a34a 40%, #15803d 100%);
+      color: #ecfdf5;
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.48);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.65);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-blue);
+      color: #f1f5f9;
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      color: #e5e7eb;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        inset: 52px 16px auto 16px;
+        padding: 10px 12px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.98);
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
+      }
+
+      .nav-burger {
+        display: block;
+      }
+    }
+
+    /* Основная сетка */
+
+    main {
+      flex: 1;
+      padding: 24px 16px 32px;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 50%),
+        radial-gradient(circle at bottom right, rgba(22, 163, 74, 0.18), transparent 55%),
+        #020617;
+    }
+
+    .main-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.05fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .main-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(24px, 3.3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #cbd5f5;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-meta strong {
+      color: #e5e7eb;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .hero-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: #e0f2fe;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Правая карточка сводки */
+
+    .side-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(22, 163, 74, 0.2), transparent 55%),
+        var(--bg-card);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .side-main {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .side-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 12px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .metric-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag-pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .tag-pill-blue {
+      border-color: rgba(56, 189, 248, 0.7);
+      background: rgba(56, 189, 248, 0.12);
+      color: #e0f2fe;
+    }
+
+    .tag-pill-green {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
+    }
+
+    /* Секции */
+
+    .section {
+      /* было: margin-top: 28px; padding: ... и т.п. */
+
+      max-width: 1080px;
+      /* тот же контейнер, что и в шапке/hero */
+      margin: 28px auto 0;
+      /* центрируем секцию */
+      padding: 16px 16px 14px;
+
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.94);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 380px;
+    }
+
+    .badge-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e0f2fe;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    /* Список тезисов */
+
+    .thesis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .thesis-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-top: 1px dashed rgba(51, 65, 85, 0.9);
+    }
+
+    .thesis-item:first-child {
+      border-top: none;
+    }
+
+    .thesis-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 5px;
+      background: radial-gradient(circle at 30% 30%, #38bdf8, #0ea5e9);
+      box-shadow: 0 0 9px rgba(56, 189, 248, 0.9);
+    }
+
+    .thesis-text {
+      flex: 1;
+    }
+
+    .thesis-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    /* Таблица финмодели */
+
+    .table-wrap {
+      margin-top: 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      overflow: hidden;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 60%), rgba(15, 23, 42, 0.98);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    thead {
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.4);
+    }
+
+    th {
+      text-align: left;
+      font-weight: 500;
+      color: #bfdbfe;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .td-label {
+      color: #e5e7eb;
+      width: 45%;
+    }
+
+    .td-value {
+      text-align: right;
+      white-space: nowrap;
+      color: #e0f2fe;
+    }
+
+    .td-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .row-highlight {
+      background: radial-gradient(circle at left, rgba(59, 130, 246, 0.18), transparent 55%), rgba(15, 23, 42, 0.98);
+    }
+
+    .row-highlight-strong {
+      background: radial-gradient(circle at left, rgba(22, 163, 74, 0.25), transparent 55%), rgba(15, 23, 42, 0.98);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .chip-green {
+      border-color: rgba(34, 197, 94, 0.75);
+      background: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
+    }
+
+    .chip-gold {
+      border-color: rgba(234, 179, 8, 0.8);
+      background: rgba(250, 204, 21, 0.1);
+      color: #fef9c3;
+    }
+
+    .chip-blue {
+      border-color: rgba(59, 130, 246, 0.8);
+      background: rgba(59, 130, 246, 0.12);
+      color: #dbeafe;
+    }
+
+    /* Структура МФЗ */
+
+    .mix-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .mix-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .mix-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mix-item {
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .mix-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .mix-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .mix-note {
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .mix-diagram {
+      border-radius: 18px;
+      border: 1px solid rgba(59, 130, 246, 0.8);
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.24), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(22, 163, 74, 0.2), transparent 55%),
+        rgba(15, 23, 42, 0.98);
+      padding: 12px 12px 10px;
+    }
+
+    .mix-diagram-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .mix-diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .mix-diagram-item {
+      padding: 6px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .mix-diagram-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    /* Господдержка */
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .support-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .support-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .support-item {
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .support-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .support-note {
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .support-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .support-right {
+      border-radius: 18px;
+      border: 1px solid rgba(234, 179, 8, 0.85);
+      background:
+        radial-gradient(circle at top left, rgba(250, 204, 21, 0.2), transparent 55%),
+        rgba(15, 23, 42, 0.98);
+      padding: 12px 12px 10px;
+    }
+
+    .support-right-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .support-right-note {
+      font-size: 12px;
+      color: #fef9c3;
+    }
+
+    /* Контакты */
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .contacts-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contacts-card,
+    .contacts-form {
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 14px 14px 12px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    .contacts-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .contacts-main {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .contacts-extra {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .form-group {
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+      font-size: 13px;
+      padding: 7px 9px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Подвал */
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      background: #020617;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 16px 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        position: static;
+      }
+
+      main {
+        padding-top: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <!-- ШАПКА -->
+    <header>
+      <nav class="nav">
+        <div class="nav-left">
+          <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <div class="logo-mark">A</div>
+            <div>
+              <div class="logo-text-main">АЛХАСТЫ</div>
+              <div class="logo-text-sub">коттеджный посёлок у реки</div>
+            </div>
+          </a>
+        </div>
+
+        <button class="nav-burger" id="navBurger" aria-label="Меню">☰</button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">На главный сайт</a>
+          <a href="#thesis">Тезис</a>
+          <a href="#model">Финмодель</a>
+          <a href="#mix">Структура МФЗ</a>
+          <a href="#support">Господдержка</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+
+        <div class="nav-cta">
+          <button class="btn btn-outline" onclick="location.href='index.html#map'">
+            Карта участков
+          </button>
+          <button class="btn btn-primary"
+            onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
+            Запросить презентацию
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+      <div class="main-inner">
+        <!-- Левая колонка -->
+        <section>
+          <div class="section-kicker">Инвестиционный профиль</div>
+          <h1 class="hero-title">
+            Многопрофильная зона посёлка <span>«Алхасты»</span>
+          </h1>
+          <p class="hero-subtitle">
+            Общественно-деловой центр на базе коттеджного посёлка «Алхасты» сочетает жильё, сервис, спорт,
+            медицинский блок, рынок и офисы. Проект рассчитан на жителей посёлка, соседние населённые пункты
+            и туристический поток Ингушетии.
+          </p>
+
+          <div class="hero-meta">
+            <div><strong>Стадия:</strong> концепция и финансовая модель</div>
+            <div><strong>Формат участия:</strong> соинвестирование, резидентство, аренда</div>
+            <div><strong>Локация:</strong> с.п. Алхасты, Сунженский район, РИ</div>
+          </div>
+
+          <div class="hero-badges">
+            <div class="hero-badge">Малоэтажный жилой массив + МФЗ</div>
+            <div class="hero-badge">Социальные объекты с господдержкой</div>
+            <div class="hero-badge">Связка с туристическим кластером региона</div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary"
+              onclick="document.getElementById('model').scrollIntoView({behavior:'smooth'})">
+              Открыть финансовую модель
+            </button>
+            <button class="btn btn-outline"
+              onclick="document.getElementById('mix').scrollIntoView({behavior:'smooth'})">
+              Структура многопрофильной зоны
+            </button>
+          </div>
+
+          <div class="hero-note">
+            На данном этапе прорабатывается детальная планировка, ТЭО и документация для привлечения якорных
+            резидентов и институциональных инвесторов.
+          </div>
+        </section>
+
+        <!-- Правая колонка: сводка -->
+        <aside class="side-card">
+          <div class="side-title">Сводка по проекту</div>
+          <div class="side-main">18 200 м² многофункциональной застройки</div>
+
+          <div class="side-grid">
+            <div class="metric">
+              <div class="metric-label">Жилой массив</div>
+              <div class="metric-value">~800 постоянных жителей</div>
+              <div class="metric-note">
+                До 100 индивидуальных домов и малоэтажные дома до 5 этажей.
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Посещаемость МФЗ</div>
+              <div class="metric-value">до 3 200 чел. в год</div>
+              <div class="metric-note">
+                За счёт жителей, соседних населённых пунктов и туристов.
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Общая площадь МФЗ</div>
+              <div class="metric-value">~18 200 м²</div>
+              <div class="metric-note">
+                Общественный центр, ФОК, рынок, медцентр, офисы, гостевой дом.
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">Арендный поток</div>
+              <div class="metric-value">до 68 млн ₽/год</div>
+              <div class="metric-note">
+                При полной загрузке, без учёта индексации и выручки резидентов.
+              </div>
+            </div>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag-pill tag-pill-blue">КРТ и развитие незастроенной территории</span>
+            <span class="tag-pill tag-pill-green">Интеграция с программами Минстроя и региона</span>
+            <span class="tag-pill">Транспортная доступность: ~20 км до аэропорта Магас</span>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Секция: Тезисная часть -->
+      <section id="thesis" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Тезис</div>
+            <h2 class="section-title">Зачем нужна многопрофильная зона в «Алхасты»</h2>
+          </div>
+          <div class="section-subtitle">
+            МФЗ становится ядром жизни посёлка: сюда «сходятся» жильцы, предприниматели, сервис,
+            спорт и туристическая инфраструктура, формируя стабильный спрос на площади и услуги.
+          </div>
+        </div>
+
+        <div class="thesis-list">
+          <div class="thesis-item">
+            <div class="thesis-bullet"></div>
+            <div class="thesis-text">
+              <div class="thesis-label">1. Баланс жилой и деловой функции</div>
+              МФЗ создаёт «точку притяжения» для жителей и гостей: магазины, сервисный кластер,
+              медицинский и духовный центр, спорткомплекс и парк. Это снижает отток населения
+              и повышает качество жизни на месте.
+            </div>
+          </div>
+
+          <div class="thesis-item">
+            <div class="thesis-bullet"></div>
+            <div class="thesis-text">
+              <div class="thesis-label">2. Диверсификация дохода инвестора</div>
+              Инвестор получает не только доход от реализации участков и домов, но и стабильный
+              арендный поток от общественно-деловой зоны, а также потенциал роста стоимости
+              недвижимости за счёт развития инфраструктуры.
+            </div>
+          </div>
+
+          <div class="thesis-item">
+            <div class="thesis-bullet"></div>
+            <div class="thesis-text">
+              <div class="thesis-label">3. Связка с туризмом и кластерами</div>
+              При грамотной интеграции многопрофильная зона становится «воротами» в туристические
+              маршруты региона, предоставляя услуги размещения, общепита и сервиса туристам,
+              партнёрам и деловым гостям.
+            </div>
+          </div>
+
+          <div class="thesis-item">
+            <div class="thesis-bullet"></div>
+            <div class="thesis-text">
+              <div class="thesis-label">4. Социальная устойчивость и господдержка</div>
+              Наличие садика, медцентра, ФОКа и благоустройства повышает шансы проекта на поддержку
+              со стороны государства, участие в инфраструктурных и социальных программах.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Финансовая модель -->
+      <section id="model" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Финансовая модель</div>
+            <h2 class="section-title">Основные параметры и предпосылки</h2>
+          </div>
+          <div class="section-subtitle">
+            Ниже приведены укрупнённые показатели финансовой модели многопрофильной зоны с ориентиром
+            на рыночные ставки аренды, структуру площадей и целевую загрузку.
+          </div>
+        </div>
+
+        <div class="badge-small">
+          <span class="badge-dot"></span>
+          Черновой вариант для предварительного обсуждения с инвесторами
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Показатель</th>
+                <th>Значение</th>
+                <th>Комментарий</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-label">Общая площадь многопрофильной зоны</td>
+                <td class="td-value">~18 200 м²</td>
+                <td class="td-note">Включая общественные, спортивные, торговые, офисные и служебные площади.</td>
+              </tr>
+
+              <tr>
+                <td class="td-label">Структура площадей</td>
+                <td class="td-value">5 основных блоков</td>
+                <td class="td-note">
+                  Общественный центр, ФОК, рынок и сервис, медцентр, гостевой дом и офисы.
+                </td>
+              </tr>
+
+              <tr class="row-highlight">
+                <td class="td-label">Прогнозная выручка от аренды (год)</td>
+                <td class="td-value">до 68 млн ₽</td>
+                <td class="td-note">
+                  При полной загрузке, без учёта индексации и выручки резидентов.
+                  <div class="chip-row">
+                    <span class="chip chip-blue">Базовый сценарий</span>
+                    <span class="chip">Детализация по ставкам — в отдельном файле</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="td-label">Фокус на якорных арендаторах</td>
+                <td class="td-value">3–5 якорей</td>
+                <td class="td-note">
+                  Продуктовый ритейл, медицинский оператор, спортивный клуб, общепит, сервисные компании.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="td-label">Окупаемость инфраструктуры (оценочно)</td>
+                <td class="td-value">8–12 лет</td>
+                <td class="td-note">
+                  В зависимости от структуры капитальных затрат, доли кредитного финансирования и темпов
+                  заполнения площадей.
+                </td>
+              </tr>
+
+              <tr class="row-highlight-strong">
+                <td class="td-label">Гибкость участия инвестора</td>
+                <td class="td-value">несколько форматов</td>
+                <td class="td-note">
+                  <div class="chip-row">
+                    <span class="chip chip-green">Соинвестирование в МФЗ</span>
+                    <span class="chip chip-gold">Покупка/аренда блоков и отдельных зданий</span>
+                    <span class="chip">Партнёрство по управлению объектами</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="td-label">Риски и ограничения</td>
+                <td class="td-value">управляемые</td>
+                <td class="td-note">
+                  Важны поэтапная реализация, маркетинговая стратегия, подбор арендаторов и сопровождение проекта
+                  на уровне региона.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">
+          Подробная финансовая модель (Excel) доступна по отдельному запросу и содержит сценарный анализ,
+          чувствительность к ставкам аренды и стадийность освоения.
+        </div>
+      </section>
+
+      <!-- Структура МФЗ -->
+      <section id="mix" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Структура многопрофильной зоны</div>
+            <h2 class="section-title">Рынок, торговля, сервис, гостевой дом</h2>
+          </div>
+          <div class="section-subtitle">
+            Повседневные услуги и краткосрочное размещение. Открытый рынок, небольшие магазины, сервисные компании,
+            мастерские, кафе и гостевой дом для туристов, специалистов и потенциальных покупателей недвижимости.
+          </div>
+        </div>
+
+        <div class="mix-grid">
+          <div class="mix-list">
+
+            <!-- Market Item (Promoted to top visuals/context, images here) -->
+            <div class="mix-item">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:0;">
+                <img src="mfz_shopping.jpg" alt="Торговая площадь"
+                  style="width:100%; border-radius:10px; border:1px solid rgba(148,163,184,0.3);">
+                <img src="mfz_hotel.jpg" alt="Отель"
+                  style="width:100%; border-radius:10px; border:1px solid rgba(148,163,184,0.3);">
+              </div>
+              <img src="plot_2_scheme.jpg" alt="Схема торгового центра (Участок №2)"
+                style="width:100%; height:auto; border-radius:10px; margin-top:8px; border:1px solid rgba(148,163,184,0.3);">
+              <img src="mfz_center.jpg" alt="Центральное здание МФЗ"
+                style="width:100%; height:auto; border-radius:10px; margin-top:8px; border:1px solid rgba(148,163,184,0.3);">
+            </div>
+
+            <div class="mix-item" style="margin-top:24px;">
+              <div class="mix-title">Духовный центр — 700 м²</div>
+              <div class="mix-meta">Общественное и духовное ядро сообщества</div>
+              <div class="mix-note">
+                Пространство для духовной жизни, встреч и мероприятий, формирующее идентичность посёлка и
+                задающее тон общему отношению к территории и соседству.
+              </div>
+            </div>
+
+            <div class="mix-item">
+              <div class="mix-title">Центральное здание МФЗ — 4 600 м²</div>
+              <div class="mix-meta">Административно-деловой и сервисный центр</div>
+              <div class="mix-note">
+                Офисы, сервисные компании, коворкинг, конференц-зона, кафе и рестораны, управляющая компания.
+                Здесь же может размещаться диспетчерский центр и служба эксплуатации посёлка.
+              </div>
+            </div>
+
+            <div class="mix-item">
+              <div class="mix-title">Спортивный комплекс и ФОК</div>
+              <div class="mix-meta">Спорт, здоровье и массовые активности</div>
+              <div class="mix-note">
+                Спортивно-оздоровительный центр, тренажёрные и игровые залы, три спортивные площадки, беговые
+                и прогулочные маршруты. Потенциал для проведения соревнований и массовых мероприятий.
+              </div>
+            </div>
+
+            <div class="mix-item">
+              <div class="mix-title">Медицинский центр — 1 500 м²</div>
+              <div class="mix-meta">Базовый медицинский сервис + диагностика</div>
+              <div class="mix-note">
+                Амбулаторные услуги для жителей и гостей, блок диагностики, кабинет профилактики и реабилитации.
+                Возможно партнёрство с частным медицинским оператором.
+              </div>
+            </div>
+
+            <div class="mix-item">
+              <div class="mix-title">Парк и набережная</div>
+              <div class="mix-meta">Общественные пространства и рекреация</div>
+              <div class="mix-note">
+                Центральный парк, детские и спортивные площадки, набережная вдоль реки Асса, зоны тихого отдыха
+                и событийные площадки для праздников и фестивалей.
+              </div>
+            </div>
+          </div>
+
+          <aside class="mix-diagram">
+            <div class="mix-diagram-title">Функциональный микс (укрупнённо)</div>
+            <div class="mix-diagram-grid">
+              <div class="mix-diagram-item">
+                <div class="mix-diagram-label">Общественный центр</div>
+                Основной сервисный и деловой кластер, офисы, управление, общепит, сервис.
+              </div>
+              <div class="mix-diagram-item">
+                <div class="mix-diagram-label">Спорт и здоровье</div>
+                ФОК, площадки, маршруты, медцентр — связка здоровья и образа жизни.
+              </div>
+              <div class="mix-diagram-item">
+                <div class="mix-diagram-label">Рынок и торговля</div>
+                Ежедневные потребности жителей и гостей, локальные производители и сервис.
+              </div>
+              <div class="mix-diagram-item">
+                <div class="mix-diagram-label">Рекреация и туризм</div>
+                Парк, набережная, гостевой дом, событийная повестка и туристический поток.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Господдержка -->
+      <section id="support" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Господдержка и институциональная рамка</div>
+            <h2 class="section-title">Возможные меры поддержки и формат взаимодействия</h2>
+          </div>
+          <div class="section-subtitle">
+            Проект опирается на механизмы комплексного развития территории и может интегрироваться в
+            региональные и федеральные программы развития инженерной, социальной и туристической инфраструктуры.
+          </div>
+        </div>
+
+        <div class="support-grid">
+          <div class="support-list">
+            <div class="support-item">
+              <div class="support-title">Комплексное развитие территории (КРТ)</div>
+              <div class="support-note">
+                Земельный участок получен инвестором по договору КРТ (комплексного развития незастроенной
+                территории). Это создаёт понятную правовую рамку и обязательства сторон по развитию территории.
+              </div>
+              <div class="support-meta">
+                Возможна координация с региональными органами власти по этапам реализации и интеграции
+                социальных объектов.
+              </div>
+            </div>
+
+            <div class="support-item">
+              <div class="support-title">Социальные объекты с господдержкой</div>
+              <div class="support-note">
+                Детский сад, ФОК, отдельные элементы инженерной и социальной инфраструктуры могут быть
+                реализованы с привлечением мер господдержки или в партнёрстве с регионом.
+              </div>
+              <div class="support-meta">
+                Рассматриваются механизмы участия Минстроя, профильных федеральных и региональных программ.
+              </div>
+            </div>
+
+            <div class="support-item">
+              <div class="support-title">Связка с туристическими программами</div>
+              <div class="support-note">
+                С учётом туристического потенциала региона, часть объектов МФЗ (гостевой дом, сервис,
+                общепит, события) может быть включена в туристические маршруты и предложения.
+              </div>
+              <div class="support-meta">
+                Потенциал сотрудничества с корпорациями развития, туроператорами и субъектами МСП.
+              </div>
+            </div>
+
+            <div class="support-item">
+              <div class="support-title">Институциональное сопровождение</div>
+              <div class="support-note">
+                Для проекта целесообразно выстроить контур сопровождения: рабочая группа с участием
+                органов власти, инвестора и потенциальных резидентов.
+              </div>
+              <div class="support-meta">
+                Это снижает риски бюрократических задержек и повышает прозрачность сроков реализации.
+              </div>
+            </div>
+          </div>
+
+          <aside class="support-right">
+            <div class="support-right-title">Что важно на этапе входа инвестора</div>
+            <div class="support-right-note">
+              • согласовать формат участия: долевое участие в МФЗ, покупка отдельных блоков, партнёрство по
+              управлению;<br>
+              • совместно уточнить этапность реализации и параметры выручки;<br>
+              • зафиксировать базовые принципы взаимодействия в меморандуме или соглашении о намерениях.<br><br>
+              Детальные документы и проектно-сметная документация формируются по итогам технической и
+              юридической экспертизы.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section id="contacts" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Контакты</div>
+            <h2 class="section-title">Связаться по проекту и получить материалы</h2>
+          </div>
+          <div class="section-subtitle">
+            Напишите, в каком формате вы рассматриваете участие: соинвестирование, резидентство, управление
+            объектом или консалтинг по развитию проекта.
+          </div>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contacts-card">
+            <div class="contacts-label">О проекте</div>
+            <div class="contacts-main">
+              Коттеджный посёлок «Алхасты» и многопрофильная зона на базе КРТ незастроенной территории.
+            </div>
+            <div class="contacts-extra">
+              Формируется пул заинтересованных инвесторов, резидентов и партнёров. Возможны различные
+              форматы участия: от долгосрочной аренды и резидентства до совместной реализации отдельных
+              объектов.
+            </div>
+
+            <div style="height:10px;"></div>
+
+            <div class="contacts-label">Контакты</div>
+            <div class="contacts-main">
+              Телефон / мессенджер: <strong>+7 (___) ___-__-__</strong><br>
+              Email: <strong>tk_dattykh@mail.ru</strong>
+            </div>
+            <div class="contacts-extra">
+              По запросу предоставим развернутую финансовую модель, мастер-план, презентацию и пакет
+              материалов для внутреннего рассмотрения.
+            </div>
+          </div>
+
+          <form class="contacts-form" id="investForm" action="https://formsubmit.co/s1410@mail.ru" method="POST">
+
+            <div class="form-group">
+              <label for="invName">Имя *</label>
+              <input id="invName" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="invCompany">Компания</label>
+              <input id="invCompany" name="company" />
+            </div>
+
+            <div class="form-group">
+              <label for="invRole">Роль / позиция</label>
+              <input id="invRole" name="role" />
+            </div>
+
+            <div class="form-group">
+              <label for="invPhone">Телефон или мессенджер *</label>
+              <input id="invPhone" name="phone" required />
+            </div>
+
+            <div class="form-group">
+              <label for="invComment">Комментарий</label>
+              <textarea id="invComment" name="comment" placeholder="Сроки, объём, дополнительные вопросы…"></textarea>
+            </div>
+
+            <!-- скрытые поля для сервиса отправки -->
+            <input type="hidden" name="_subject" value="Новая инвест-заявка с сайта Алхасты">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://aldoshabu-del.github.io/-/investors.html#contacts">
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">
+              Отправить запрос
+            </button>
+
+            <div class="form-note">
+              Сейчас форма демонстрационная: данные выводятся в консоль браузера.
+              На боевой версии можно подключить CRM, почту или Telegram-бота.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> Многопрофильная зона посёлка «Алхасты». Материал носит ознакомительный характер.
+        </div>
+        <div>
+          Данные не являются офертой. Параметры проекта и финансовой модели подлежат уточнению по итогам
+          технической и юридической экспертизы.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // год в подвале
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // бургер-меню
+    const navBurger = document.getElementById("navBurger");
+    const navLinks = document.getElementById("navLinks");
+    navBurger.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(a => {
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>

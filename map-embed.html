@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Map Frame</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-023WYKLBNJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-023WYKLBNJ');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Dark Theme Variables matching parent */
+        :root {
+            --bg-dark: #111;
+            --bg-card: rgba(22, 25, 31, 0.95);
+            --accent-gold: #c6a87c;
+            --text-main: #e0e0e0;
+            --text-muted: #8b929e;
+            --border-subtle: rgba(198, 168, 124, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Manrope', sans-serif;
+            background: transparent;
+            /* Allows parent bg to show if needed */
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        #map {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Floating Sidebar for details */
+        .sidebar-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            max-height: calc(100% - 40px);
+            background: var(--bg-card);
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+            padding: 20px;
+            padding-bottom: 20px;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            /* Hidden by default until selection */
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-gold) var(--bg-card);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .status-free {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .status-reserved {
+            background: rgba(234, 179, 8, 0.2);
+            color: #facc15;
+        }
+
+        .status-sold {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .status-municipal {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .prop-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+        }
+
+        .prop-label {
+            color: var(--text-muted);
+        }
+
+        .prop-val {
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .price-lg {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-gold);
+            color: #000;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Yandex Map Overrides for Dark Mode */
+        [class*="ymaps-2"][class*="-ground-pane"] {
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar">
+        <button class="close-btn" onclick="deselectPlot()">&times;</button>
+        <h2 id="pTitle">Участок №</h2>
+        <div id="pStatus" class="status-badge">Свободен</div>
+        <div class="price-lg" id="pPrice"></div>
+
+        <div class="prop-row">
+            <span class="prop-label">Площадь</span>
+            <span class="prop-val" id="pArea"></span>
+        </div>
+        <div class="prop-row">
+            <span class="prop-label">Категория</span>
+            <span class="prop-val-sm" id="pCat">ИЖС</span>
+        </div>
+        <div class="prop-row">
+            <span class="prop-label">ВРИ</span>
+            <span class="prop-val-sm" id="pVri">-</span>
+        </div>
+
+        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.4; margin:15px 0;" id="pDesc">
+            Описание участка...
+        </p>
+
+        <button class="action-btn" onclick="bookPlot(selectedPlot.id)">Забронировать</button>
+    </div>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=9008e2df-de67-4122-b78b-3d37e2ef5617&lang=ru_RU"></script>
+    <script>
+        let myMap;
+        let plotsData = [];
+        let selectedPlot = null;
+
+        // Dark Theme Colors for Polygons
+        const COLORS = {
+            free: { fill: "#22C55E66", stroke: "#22C55E" },
+            reserved: { fill: "#EAB30866", stroke: "#EAB308" },
+            sold: { fill: "#EF444466", stroke: "#EF4444" },
+            municipal: { fill: "#3B82F666", stroke: "#3B82F6" }
+        };
+
+        function getStyle(status) {
+            const s = (status || "").toLowerCase();
+            if (s.includes("муниц")) return COLORS.municipal;
+            if (s.includes("прод")) return COLORS.sold;
+            if (s.includes("резерв")) return COLORS.reserved;
+            return COLORS.free;
+        }
+
+        function init() {
+            // Initialize map with a dark-ish feel (hybrid usually looks good)
+            myMap = new ymaps.Map("map", {
+                center: [43.1743, 44.9943],
+                zoom: 16,
+                type: "yandex#hybrid",
+                controls: ['zoomControl']
+            });
+
+            // Load data
+            fetch("plotsData.json?t=" + Date.now())
+                .then(r => r.json())
+                .then(data => {
+                    plotsData = data;
+                    renderPlots();
+                });
+
+            // Listen for filter messages from parent
+            window.addEventListener('message', (event) => {
+                if (event.data.type === 'filter') {
+                    applyFilter(event.data.value);
+                }
+            });
+        }
+
+        function renderPlots() {
+            myMap.geoObjects.removeAll();
+            plotsData.forEach(plot => {
+                const style = getStyle(plot.status);
+                const polygon = new ymaps.Polygon(
+                    [plot.coords.map(p => [p[1], p[0]])],
+                    { hintContent: `Участок ${plot.id}` },
+                    {
+                        fillColor: style.fill,
+                        strokeColor: style.stroke,
+                        strokeWidth: 2,
+                        opacity: 0.8,
+                        cursor: (plot.status || "").toLowerCase().includes("муниц") ? "default" : "pointer"
+                    }
+                );
+
+                polygon.events.add("click", () => {
+                    if ((plot.status || "").toLowerCase().includes("муниц")) return;
+                    selectPlot(plot);
+                });
+                plot.polygon = polygon; // Store ref
+                myMap.geoObjects.add(polygon);
+            });
+        }
+
+        function selectPlot(plot) {
+            selectedPlot = plot;
+
+            // Update Sidebar
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('pTitle').textContent = `Участок ${plot.id}`;
+
+            const statusInfo = getStatusInfo(plot.status);
+            const statusEl = document.getElementById('pStatus');
+            statusEl.textContent = plot.status;
+            statusEl.className = `status-badge ${statusInfo.cls}`;
+
+            document.getElementById('pPrice').textContent = plot.price || "По запросу";
+            document.getElementById('pArea').textContent = plot.area;
+            document.getElementById('pCat').textContent = plot.landCategory || "-";
+            document.getElementById('pVri').textContent = plot.vri || "-";
+            document.getElementById('pDesc').textContent = plot.projectDescription || plot.address || "";
+
+            // Highlight on map
+            // Reset all others first if needed, but Yandex handles styles well
+        }
+
+        function deselectPlot() {
+            document.getElementById('sidebar').style.display = 'none';
+            selectedPlot = null;
+        }
+
+        function getStatusInfo(s) {
+            s = (s || "").toLowerCase();
+            if (s.includes("муниц")) return { cls: "status-municipal" };
+            if (s.includes("прод")) return { cls: "status-sold" };
+            if (s.includes("резерв")) return { cls: "status-reserved" };
+            return { cls: "status-free" };
+        }
+
+        function applyFilter(filterType) {
+            plotsData.forEach(plot => {
+                let visible = true;
+                const s = (plot.status || "").toLowerCase();
+
+                if (filterType === 'free' && !(!s.includes('прод') && !s.includes('резерв') && !s.includes('муниц'))) visible = false;
+                if (filterType === 'reserved' && !s.includes('резерв')) visible = false;
+                // if (filterType === 'sold' && !s.includes('прод')) visible = false; 
+
+                plot.polygon.options.set('visible', visible);
+            });
+        }
+
+        function bookPlot(id) {
+            window.parent.postMessage({ type: 'bookPlot', plotId: id }, '*');
+        }
+
+        ymaps.ready(init);
+    </script>
+</body>
+
+</html>
