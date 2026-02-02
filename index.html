@@ -1146,17 +1146,11 @@
       const data = Object.fromEntries(formData.entries());
       data.type = formType; // 'contact' or 'booking'
 
-      // Проверка настройки ID
-      if (FORMSPREE_ID === 'YOUR_ID_HERE') {
-        alert('Система отправки почти готова!\n\nДля владельца сайта: необходимо вставить ID формы Formspree в код index.html (строка ~1140).\n\nСейчас ваша заявка не была отправлена.');
-        return;
-      }
-
-      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      // Отправка на локальный сервер (local_server.py)
+      fetch('/send-request', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       })
@@ -1164,17 +1158,11 @@
           if (response.ok) {
             return response.json();
           } else {
-            return response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                throw new Error(data["errors"].map(error => error["message"]).join(", "));
-              } else {
-                throw new Error('Ошибка сервиса отправки');
-              }
-            });
+            throw new Error('Ошибка сервера');
           }
         })
         .then(result => {
-          alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
+          alert('Спасибо! Ваша заявка принята и сохранена (локально).');
           form.reset();
           if (formType === 'booking') closeReservationModal();
         })
