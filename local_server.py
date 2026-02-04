@@ -57,15 +57,66 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 with open('requests.txt', 'a', encoding='utf-8') as f:
                     f.write(f"New Request: {data}\n")
                 
-                # 2. Prepare Email Logic (Placeholder for real SMTP)
-                # To actually send, we need: server, port, login, password.
-                # Without them, we can't send real emails from localhost easily.
-                print(f"--- NEW LEAD RECEIVED ---\nName: {data.get('name')}\nPhone: {data.get('phone')}\nPlot: {data.get('plotId', 'General')}\n-------------------------")
+                # 2. Prepare Email Logic
+                # Получаем данные из JSON
+                name = data.get('name', 'Не указано')
+                phone = data.get('phone', 'Не указано')
+                plot_id = data.get('plotId', 'Не выбран')
+                msg_type = data.get('type', 'Заявка')
+                
+                # Формируем текст письма
+                subject = f"Новая заявка с сайта: {name}"
+                body = f"""
+                <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc;">
+                    <h2 style="color: #c6a87c;">Новая заявка: {msg_type}</h2>
+                    <p><strong>Имя:</strong> {name}</p>
+                    <p><strong>Телефон:</strong> <a href="tel:{phone}">{phone}</a></p>
+                    <p><strong>Участок:</strong> {plot_id}</p>
+                    <hr>
+                    <p style="color: #666; font-size: 12px;">Это письмо отправлено автоматически с сайта.</p>
+                </div>
+                """
+                
+                print(f"--- NEW LEAD RECEIVED ---\nName: {name}\nPhone: {phone}\nPlot: {plot_id}\n-------------------------")
+                
+                # --- SMTP CONFIGURATION (ЗАПОЛНИТЕ ЭТИ ДАННЫЕ) ---
+                # Для работы почты нужно указать данные вашего SMTP сервера (например, Яндекс или Гугл)
+                SMTP_HOST = "smtp.yandex.ru" # или smtp.gmail.com
+                SMTP_PORT = 465 # SSL
+                SMTP_USER = "your_email@yandex.ru" # Ваш email (отправитель)
+                SMTP_PASS = "your_password" # Пароль приложения (не от почты, а специальный!)
+                TO_EMAIL = "target_email@example.com" # Куда отправлять заявки
+                
+                # Пытаемся отправить, если данные заполнены (простая проверка)
+                if SMTP_USER != "your_email@yandex.ru" and SMTP_PASS != "your_password":
+                    try:
+                        import smtplib
+                        import ssl
+                        from email.mime.text import MIMEText
+                        from email.mime.multipart import MIMEMultipart
+                        
+                        msg = MIMEMultipart()
+                        msg["From"] = SMTP_USER
+                        msg["To"] = TO_EMAIL
+                        msg["Subject"] = subject
+                        msg.attach(MIMEText(body, "html"))
+                        
+                        context = ssl.create_default_context()
+                        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=context) as server:
+                            server.login(SMTP_USER, SMTP_PASS)
+                            server.sendmail(SMTP_USER, TO_EMAIL, msg.as_string())
+                        print("Email sent successfully!")
+                        
+                    except Exception as email_err:
+                        print(f"Failed to send email: {email_err}")
+                        # Don't fail the request, just log error
+                else:
+                    print("SMTP not configured. Email skipped.")
                 
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
-                self.wfile.write(b'{"status": "success", "message": "Request saved"}')
+                self.wfile.write(b'{"status": "success", "message": "Request processed"}')
                 
             except Exception as e:
                 print(f"Error processing request: {e}")

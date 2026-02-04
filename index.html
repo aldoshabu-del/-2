@@ -11,6 +11,28 @@
 
     gtag('config', 'G-023WYKLBNJ');
   </script>
+  <!-- Marquiz script -->
+  <script>
+    (function (w, d, s, o) {
+      var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js'; j.onload = function () {
+        if (document.readyState !== 'loading') Marquiz.init(o);
+        else document.addEventListener("DOMContentLoaded", function () {
+          Marquiz.init(o);
+        });
+      };
+      d.head.appendChild(j);
+    })(window, document, 'script', {
+      host: '//quiz.marquiz.ru',
+      region: 'ru',
+      id: '68ac669a18cb890019a4faf6',
+      autoOpen: false,
+      autoOpenFreq: 0,
+      openOnExit: false,
+      disableOnMobile: false
+    }
+    );
+  </script>
+
   <meta charset="UTF-8" />
   <title>Коттеджный посёлок «Алхасты» — официальный сайт</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -251,6 +273,42 @@
     .hero-buttons {
       opacity: 0;
       animation: fadeUp 1s ease forwards 1.1s;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn {
+      background: rgba(198, 168, 124, 0.65);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(198, 168, 124, 0.5);
+      color: #fff;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-buttons .btn:hover {
+      background: rgba(198, 168, 124, 0.85);
+      transform: translateY(-2px);
+    }
+
+    .hero-buttons .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+    }
+
+    .hero-buttons .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
     }
 
     @keyframes fadeUp {
@@ -279,10 +337,14 @@
     }
 
     .feature-card {
-      padding: 40px;
+      padding: 0;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       transition: transform 0.3s ease;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .feature-card:hover {
@@ -290,15 +352,33 @@
       border-color: var(--accent-gold);
     }
 
-    .feature-icon {
-      font-size: 2rem;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-      display: block;
+    .feature-img-wrap {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .feature-img-wrap img {
+      transform: scale(1.1);
+    }
+
+    .feature-content {
+      padding: 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .feature-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-bottom: 15px;
       color: #fff;
     }
@@ -306,6 +386,7 @@
     .feature-desc {
       color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* --- Map Section (The Core) --- */
@@ -560,7 +641,8 @@
         с окружающим ландшафтом.</p>
       <div class="hero-buttons">
         <a href="#map" class="btn">Выбрать участок</a>
-        <a href="#about" class="btn-outline btn" style="margin-left:15px;">Узнать больше</a>
+        <button onclick="Marquiz.showModal('68ac669a18cb890019a4faf6')" class="btn-outline btn">Быстрый рассчет
+          стоимости дома</button>
       </div>
     </div>
   </section>
@@ -590,7 +672,86 @@
           <p class="feature-desc">Собственный парк, детские площадки, спортивный кластер и удобные подъездные пути.</p>
         </div>
       </div>
-    </div>
+
+      <div style="margin-top: 80px;">
+        <span class="section-subtitle">Комфорт 24/7</span>
+        <h2 class="section-title">Внутренняя инфраструктура</h2>
+
+        <div class="features-grid">
+          <!-- Park -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="park.jpg" alt="Центральный Парк">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Центральный Парк</h3>
+              <p class="feature-desc">3,5 Га благоустроенной территории: центральный парк, тенистые аллеи, зоны барбекю
+                и ландшафтный дизайн.</p>
+            </div>
+          </div>
+
+          <!-- Sport -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="sport.jpg" alt="Спортивный кластер">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Спортивный кластер</h3>
+              <p class="feature-desc">ФОК с тренажерными залами, футбольное поле, теннисные корты и зоны
+                воркаута.</p>
+            </div>
+          </div>
+
+          <!-- Spirit -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="mosque.jpg" alt="Духовный центр">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Духовный центр</h3>
+              <p class="feature-desc">Мечеть и культурный центр — духовное ядро сообщества, объединяющее жителей
+                поселка.
+              </p>
+            </div>
+          </div>
+
+          <!-- Commercial -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="mfz_shopping.jpg" alt="Торговля и Сервис">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Торговля и Сервис</h3>
+              <p class="feature-desc">Собственный торговый центр, магазин эко-продуктов, кафе и сервисные службы в
+                шаговой
+                доступности.</p>
+            </div>
+          </div>
+
+          <!-- Medical -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="medical.jpg" alt="Медицина">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Медицина</h3>
+              <p class="feature-desc">Медицинский пункт и аптека для заботы о здоровье вашей семьи рядом с домом.</p>
+            </div>
+          </div>
+
+          <!-- Hotel/SPA -->
+          <div class="feature-card">
+            <div class="feature-img-wrap">
+              <img src="mfz_hotel.jpg" alt="SPA и Отдых">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">SPA и Отдых</h3>
+              <p class="feature-desc">Гостиничный комплекс и SPA-центр, где вы и ваши гости сможете отдохнуть и
+                восстановить силы.</p>
+            </div>
+          </div>
+        </div>
+      </div>
   </section>
 
   <!-- Gallery Section -->
@@ -1162,7 +1323,7 @@
           }
         })
         .then(result => {
-          alert('Спасибо! Ваша заявка принята и сохранена (локально).');
+          alert('Спасибо! Ваша заявка принята. Менеджер свяжется с вами в ближайшее время.');
           form.reset();
           if (formType === 'booking') closeReservationModal();
         })
@@ -1188,13 +1349,13 @@
       if (formPlotId) formPlotId.value = plotId;
       if (reservationModal) {
         reservationModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'dden';
       }
     }
 
     function closeReservationModal() {
       if (reservationModal) {
-        reservationModal.style.display = 'none';
+        reservationModal.style.display
         document.body.style.overflow = 'auto';
       }
     }
@@ -1215,6 +1376,5 @@
 
   </script>
 
-</body>
 
 </html>
